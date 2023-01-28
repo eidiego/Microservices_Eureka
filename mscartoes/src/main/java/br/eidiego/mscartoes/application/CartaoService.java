@@ -17,7 +17,8 @@ import lombok.RequiredArgsConstructor;
 public class CartaoService {
 
 	
-    private final CartaoRepository repository;
+	@Autowired
+    private CartaoRepository repository;
 
     @Transactional
     public Cartao save(Cartao cartao) {

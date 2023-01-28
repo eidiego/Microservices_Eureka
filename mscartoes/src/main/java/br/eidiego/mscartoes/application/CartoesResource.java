@@ -1,18 +1,24 @@
 package br.eidiego.mscartoes.application;
 
-import br.eidiego.mscartoes.application.representation.CartoesPorClienteResponse;
-import br.eidiego.mscartoes.application.representation.ClienteCartaoService;
-import br.eidiego.mscartoes.domain.ClienteCartao;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import br.eidiego.mscartoes.application.representation.CartaoSaveRequest;
-import br.eidiego.mscartoes.domain.Cartao;
-import lombok.RequiredArgsConstructor;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.eidiego.mscartoes.application.representation.CartaoSaveRequest;
+import br.eidiego.mscartoes.application.representation.CartoesPorClienteResponse;
+import br.eidiego.mscartoes.application.representation.ClienteCartaoService;
+import br.eidiego.mscartoes.domain.Cartao;
+import br.eidiego.mscartoes.domain.ClienteCartao;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("cartoes")
@@ -21,7 +27,8 @@ public class CartoesResource {
 
     private final CartaoService cartaoService;
 
-    private final ClienteCartaoService clienteCartaoService;
+    @Autowired
+    private ClienteCartaoService clienteCartaoService;
 
     @GetMapping
     public String status() {
